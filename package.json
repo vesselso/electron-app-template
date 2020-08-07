@@ -1,7 +1,7 @@
 {
-  "name": "electron-app-rare",
+  "name": "electron-app-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "This hosts the multi-page, works-offline architecture template for an Electron React app, packaged using Parcel (instead of Webpack)",
   "main": "app/main.js",
   "homepage": "./",
   "scripts": {
@@ -10,7 +10,7 @@
 
     "clean-build": "rm -rf build/ .cache dist/",
     "electron-start": "electron .",
-    "electron-build": "electron-builder -m",
+    "electron-build": "electron-builder -mw",
     "react-start": "parcel -p 3000 entry.html",
     "react-build": "yarn build-login && yarn build-install",
 
