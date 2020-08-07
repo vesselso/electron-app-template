@@ -1,0 +1,21 @@
+{
+  "name": "electron-app-rare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "productName": "Vessel",
+    "copyright": "Copyright © 2020 Vessel"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^9.1.2",
+    "electron-builder": "^22.8.0"
+  }
+}
