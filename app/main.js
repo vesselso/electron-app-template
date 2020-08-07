@@ -1,4 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
+const path = require("path")
+const isDev = require("electron-is-dev")
 var loginWindow, courseSelectionWindow
 
 function createWindow() {
@@ -9,7 +11,9 @@ function createWindow() {
             nodeIntegration: true
         }
     })
-    loginWindow.loadFile('app/login/login.html')
+    loginWindow.loadURL(isDev
+        ? "http://localhost:3000/app/login/login.html"
+        : `file://${path.join(__dirname, "../build/login/login.html")}`)
 }
 
 app.whenReady().then(createWindow)
@@ -27,17 +31,3 @@ app.on('activate', () => {
 })
 
 /* IPC Processes */
-
-ipcMain.on('sim-after-login-scrape', (event, arg) => {
-    // Create the course selection window
-    courseSelectionWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: true
-        }
-    })
-    courseSelectionWindow.loadURL("http://localhost:3000/courseselection.html")
-    // Close the login window
-    loginWindow.close()
-})

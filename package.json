@@ -3,19 +3,48 @@
   "version": "1.0.0",
   "description": "",
   "main": "app/main.js",
+  "homepage": "./",
   "scripts": {
-    "start": "electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \"",
+    "build": "yarn clean-build && yarn react-build && yarn electron-build",
+
+    "clean-build": "rm -rf build/ .cache dist/",
+    "electron-start": "electron .",
+    "electron-build": "electron-builder -m",
+    "react-start": "parcel -p 3000 entry.html",
+    "react-build": "yarn build-login && yarn build-install",
+
+    "build-login": "parcel build app/login/login.html --out-dir build/login --public-url ./",
+    "build-install": "parcel build app/install/install.html --out-dir build/install --public-url ./"
   },
   "build": {
+    "appId": "so.vessel.client",
     "productName": "Vessel",
-    "copyright": "Copyright © 2020 Vessel"
+    "copyright": "Copyright © 2020 Vessel",
+    "files": [
+      "app/main.js",
+      "build/**"
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    }
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
     "electron": "^9.1.2",
-    "electron-builder": "^22.8.0"
+    "electron-builder": "^22.8.0",
+    "parcel-bundler": "^1.12.4",
+    "wait-on": "^5.1.0"
+  },
+  "dependencies": {
+    "electron-is-dev": "^1.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
