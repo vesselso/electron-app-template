@@ -3,10 +3,17 @@ const path = require("path")
 const isDev = require("electron-is-dev")
 var loginWindow, courseSelectionWindow
 
+/* Window Creation Functions */
+
 function createWindow() {
+    // TO-DO: Add logic to determine whether show login screen or main screen
+    createLoginWindow()
+}
+
+function createLoginWindow() {
     loginWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 310,
+        height: 535,
         webPreferences: {
             nodeIntegration: true
         }
@@ -15,6 +22,21 @@ function createWindow() {
         ? "http://localhost:3000/app/login/login.html"
         : `file://${path.join(__dirname, "../build/login/login.html")}`)
 }
+
+function createInstallWindow() {
+    courseSelectionWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+          nodeIntegration: true
+        }
+      })
+      courseSelectionWindow.loadURL(isDev
+        ? "http://localhost:3000/app/install/install.html"
+        : `file://${path.join(__dirname, "../build/install/install.html")}`)
+}
+
+/* App Logic */
 
 app.whenReady().then(createWindow)
 
@@ -31,3 +53,17 @@ app.on('activate', () => {
 })
 
 /* IPC Processes */
+
+ipcMain.on('sim-after-login-scrape', (event, arg) => {
+  // Create the course selection window
+  createInstallWindow()
+  // Close the login window
+  loginWindow.close()
+})
+
+ipcMain.on('install-to-login', (event, arg) => {
+    // Create the course selection window
+    createLoginWindow()
+    // Close the login window
+    courseSelectionWindow.close()
+})

@@ -6,12 +6,18 @@
   "homepage": "./",
   "scripts": {
     "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \"",
+    "react-start": "parcel -p 3000 entry.html",
+    "electron-start": "electron .",
+
+
     "build": "yarn clean-build && yarn react-build && yarn electron-build",
+    "build-mac": "yarn clean-build && yarn react-build && yarn electron-build-mac",
+    "build-windows": "yarn clean-build && yarn react-build && yarn electron-build-windows",
 
     "clean-build": "rm -rf build/ .cache dist/",
-    "electron-start": "electron .",
     "electron-build": "electron-builder -mw",
-    "react-start": "parcel -p 3000 entry.html",
+    "electron-build-mac": "electron-builder -m",
+    "electron-build-windows": "electron-builder -w",
     "react-build": "yarn build-login && yarn build-install",
 
     "build-login": "parcel build app/login/login.html --out-dir build/login --public-url ./",
