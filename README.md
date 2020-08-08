@@ -6,7 +6,7 @@ Please use `yarn` instead of `npm` for development on this template. You may hav
 
 ---
 
-An easy-to-use, multi-page, offline-ready architecture template for an Electron React app, packaged using Parcel (instead of Webpack). Examples of including assets (e.g. images) and child App components are included in the template.
+An easy-to-use, multi-page, offline-ready architecture template for an Electron React app, packaged using Parcel (instead of Webpack). Examples of including assets (e.g. images) child App components, and Electron's Inter-Process Communication are included in the template.
 
 ## ❓ Problem
 
