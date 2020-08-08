@@ -123,9 +123,11 @@ Then, in for the `react-build` script, add ` && yarn build-newPage` to the end, 
 
 4. **In `main.js`, when the new page needs to be linked, use the following format:**
 
+```
     loginWindow.loadURL(isDev
         ? "http://localhost:3000/app/newPage/newPage.html"
         : `file://${path.join(__dirname, "../build/newPage/newPage.html")}`)
+```
         
 5. **Run `yarn start` and `yarn build` to see if there are any errors.**
 
