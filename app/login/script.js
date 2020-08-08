@@ -9,7 +9,7 @@ function simAfterLogin() {
 ReactDOM.render(
     <React.StrictMode>
         <div>
-            <p>Login Screen</p>
+            <p>Login Screen (This button uses IPC)</p>
             <br />
             <button onClick={simAfterLogin}>Login (simulate Scrape Finished)</button>
         </div>

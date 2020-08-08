@@ -13,7 +13,7 @@ ReactDOM.render(
     <React.StrictMode>
         <div>
             <h2>React Part</h2>
-            <p>Course Selection Screen</p>
+            <p>Course Selection Screen (This button uses IPC)</p>
             <button onClick={backToLogin}>Back</button>
             <br />
             <p>This button is a React child component</p>
