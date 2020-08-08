@@ -28,10 +28,10 @@ function createInstallWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-          nodeIntegration: true
+            nodeIntegration: true
         }
-      })
-      courseSelectionWindow.loadURL(isDev
+    })
+    courseSelectionWindow.loadURL(isDev
         ? "http://localhost:3000/app/install/install.html"
         : `file://${path.join(__dirname, "../build/install/install.html")}`)
 }
@@ -55,10 +55,10 @@ app.on('activate', () => {
 /* IPC Processes */
 
 ipcMain.on('sim-after-login-scrape', (event, arg) => {
-  // Create the course selection window
-  createInstallWindow()
-  // Close the login window
-  loginWindow.close()
+    // Create the course selection window
+    createInstallWindow()
+    // Close the login window
+    loginWindow.close()
 })
 
 ipcMain.on('install-to-login', (event, arg) => {
