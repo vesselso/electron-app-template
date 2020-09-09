@@ -41,6 +41,8 @@
     "cross-env": "^7.0.2",
     "electron": "^9.1.2",
     "electron-builder": "^22.8.0",
+    "eslint": "^7.8.1",
+    "eslint-plugin-react": "^7.20.6",
     "parcel-bundler": "^1.12.4",
     "wait-on": "^5.1.0"
   },
