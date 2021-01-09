@@ -14,7 +14,7 @@ An easy-to-use, multi-page, offline-ready architecture template for an Electron 
 
 ## 💁‍♂️ Solution
 
-`electron-app-template` adopts a straightforward structure for MPA development: all pages are put in separate folders in the `app` folder. Inside each folder, there are 5 items:
+`electron-velcro` adopts a straightforward structure for MPA development: all pages are put in separate folders in the `app` folder. Inside each folder, there are 5 items:
 
 1. `asset` folder: Includes all static assets (images etc.)
 2. `component` folder: Includes all React components, including `<App />`
